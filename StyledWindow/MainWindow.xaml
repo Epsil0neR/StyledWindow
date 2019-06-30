@@ -1,0 +1,57 @@
+﻿<Window x:Class="StyledWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ap="clr-namespace:StyledWindow"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}"
+        Icon="icon.ico"
+        ap:WindowStyle.ShowTitle="False"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="LightSkyBlue">
+    </Grid>
+
+    <ap:WindowStyle.Menu>
+        <Menu>
+            <MenuItem Header="item 1">
+                <MenuItem Header="1-0" />
+                <Separator />
+                <MenuItem Header="1-1" />
+                <Separator />
+                <MenuItem Header="1-2">
+                    <MenuItem Header="Item 1-2-1" />
+                    <MenuItem Header="Item 1-2-2" />
+                    <Separator />
+                    <MenuItem Header="Item 1-2-3" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="item 2">
+                <MenuItem Header="2-1" />
+                <MenuItem Header="2-2" />
+            </MenuItem>
+            <MenuItem Header="item 3">
+                <MenuItem Header="3-1" />
+                <MenuItem Header="3-2" />
+            </MenuItem>
+            <MenuItem Header="item 4">
+                <MenuItem Header="4-1" />
+                <MenuItem Header="4-2" />
+            </MenuItem>
+            <MenuItem Header="item 5">
+                <MenuItem Header="5-1" />
+                <MenuItem Header="5-2" />
+            </MenuItem>
+        </Menu>
+    </ap:WindowStyle.Menu>
+    <ap:WindowStyle.LeftContent>
+        <WrapPanel Orientation="Horizontal">
+            <Button Content="Hello world!" />
+            <Button Content="Hello world!" />
+            <Button Content="Hello world!" />
+        </WrapPanel>
+    </ap:WindowStyle.LeftContent>
+    <ap:WindowStyle.RightContent>
+        <TextBox Text="Search..." />
+    </ap:WindowStyle.RightContent>
+</Window>
