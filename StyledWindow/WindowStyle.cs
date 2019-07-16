@@ -5,8 +5,6 @@ namespace StyledWindow
 {
     public class WindowStyle
     {
-        public static string TitleBackgroundKey { get; } = "WindowStyle.TitleBackground";
-        public static string ActiveKey { get; } = "WindowStyle.Active";
 
         public static readonly DependencyProperty LeftContentProperty = DependencyProperty.RegisterAttached(
             "LeftContent",
