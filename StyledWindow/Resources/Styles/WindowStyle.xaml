@@ -13,12 +13,14 @@
 
     <SolidColorBrush x:Key="WindowStyle.Brushes.Background" Color="{StaticResource WindowStyle.Colors.Background}"/>
     <SolidColorBrush x:Key="WindowStyle.Brushes.Highlight" Color="{StaticResource WindowStyle.Colors.Highlight}"/>
-    <SolidColorBrush x:Key="WindowStyle.Brushes.Active" Color="{StaticResource WindowStyle.Colors.Active}"/>
+    <SolidColorBrush x:Key="{x:Static ap:WindowStyle.ActiveKey}" Color="{StaticResource WindowStyle.Colors.Active}"/>
     <SolidColorBrush x:Key="WindowStyle.Brushes.Foreground" Color="{StaticResource WindowStyle.Colors.Foreground}"/>
 
     <SolidColorBrush x:Key="WindowStyle.Menu.Colors.Hover" Color="#3E3E40" />
     <SolidColorBrush x:Key="WindowStyle.Menu.Colors.Border" Color="#333337" />
     <SolidColorBrush x:Key="WindowStyle.MenuItem.Colors.Hover" Color="#333334" />
+
+    <SolidColorBrush x:Key="{x:Static ap:WindowStyle.TitleBackgroundKey}" Color="{StaticResource WindowStyle.Colors.Background}" />
 
     <Style x:Key="WindowStyle.ApplicationButton" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource WindowStyle.Brushes.Foreground}" />
@@ -44,7 +46,7 @@
                             <Setter Property="Background" Value="{DynamicResource WindowStyle.Brushes.Highlight}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WindowStyle.Brushes.Active}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static ap:WindowStyle.ActiveKey}}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="contentPresenter" Property="Opacity" Value=".5" />
@@ -87,7 +89,7 @@
         <Setter Property="Command" Value="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" />
         <Style.Resources>
             <SolidColorBrush x:Key="WindowStyle.Brushes.Highlight" Color="{StaticResource WindowStyle.Colors.Critical}" />
-            <SolidColorBrush x:Key="WindowStyle.Brushes.Active" Color="{StaticResource WindowStyle.Colors.Critical}"/>
+            <SolidColorBrush x:Key="{x:Static ap:WindowStyle.ActiveKey}" Color="{StaticResource WindowStyle.Colors.Critical}"/>
         </Style.Resources>
     </Style>
 
@@ -227,7 +229,7 @@
                         <!-- Using the system colors for the Menu Highlight and IsEnabled-->
                         <Trigger Property="IsHighlighted" Value="true">
                             <Setter Property="Background" Value="{StaticResource WindowStyle.MenuItem.Colors.Hover}" TargetName="Border"/>
-                            <Setter TargetName="ArrowPanelPath" Property="Fill" Value="{StaticResource WindowStyle.Brushes.Active}" />
+                            <Setter TargetName="ArrowPanelPath" Property="Fill" Value="{DynamicResource WindowStyle.Brushes.Active}" />
                             <!--<Setter Property="Foreground" Value="Black"/>-->
                         </Trigger>
 
@@ -279,7 +281,7 @@
         <EventSetter Event="Loaded" Handler="EventSetter_OnHandler" HandledEventsToo="True" />
 
         <Setter Property="Foreground" Value="{DynamicResource WindowStyle.Brushes.Foreground}" />
-        <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource WindowStyle.Brushes.Background}"/>
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Padding" Value="7" />
@@ -290,7 +292,7 @@
                     <Border
                         x:Name="WindowBorder" 
                         Margin="{Binding Source={x:Static SystemParameters.WindowNonClientFrameThickness}}" 
-                        Background="{StaticResource WindowStyle.Brushes.Background}">
+                        Background="{TemplateBinding Background}">
                         <Grid>
                             <Border BorderThickness="1">
                                 <AdornerDecorator>
@@ -310,7 +312,7 @@
                                             x:Name="HeaderBackground"
                                             Grid.Row="0"
                                             Height="25" 
-                                            Fill="{StaticResource WindowStyle.Brushes.Background}"
+                                            Fill="{DynamicResource {x:Static ap:WindowStyle.TitleBackgroundKey}}"
                                             VerticalAlignment="Top" />
 
                                         <Grid Grid.Row="0">
@@ -336,7 +338,7 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <WrapPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top"
-                                                           Margin="0 4 0 2">
+                                                           Margin="4 0 2 0">
                                                     <WrapPanel.Resources>
                                                         <Style TargetType="Button" BasedOn="{StaticResource WindowStyle.ApplicationButton}" />
                                                     </WrapPanel.Resources>
@@ -386,7 +388,7 @@
                                             Height="12" 
                                             Margin="1"
                                             HorizontalAlignment="Right"
-                                            Stroke="{StaticResource WindowStyle.Brushes.Active}" 
+                                            Stroke="{DynamicResource {x:Static ap:WindowStyle.ActiveKey}}" 
                                             StrokeThickness="1"
                                             Stretch="None" 
                                             Data="F1 M1,10 L3,10 M5,10 L7,10 M9,10 L11,10 M2,9 L2,11 M6,9 L6,11 M10,9 L10,11 M5,6 L7,6 M9,6 L11,6 M6,5 L6,7 M10,5 L10,7 M9,2 L11,2 M10,1 L10,3" />
@@ -394,7 +396,7 @@
                                 </AdornerDecorator>
                             </Border>
                             <Border 
-                                BorderBrush="{StaticResource WindowStyle.Brushes.Active}"
+                                BorderBrush="{DynamicResource {x:Static ap:WindowStyle.ActiveKey}}"
                                 BorderThickness="1" 
                                 SnapsToDevicePixels="True"
                                 Visibility="{Binding IsActive, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Converter.BooleanToVisibility}}" />
