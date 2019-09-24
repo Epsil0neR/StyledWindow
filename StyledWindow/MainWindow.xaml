@@ -6,7 +6,7 @@
         xmlns:ap="clr-namespace:StyledWindow"
         mc:Ignorable="d"
         Style="{StaticResource WindowStyle}"
-        Icon="icon.ico"
+        Icon="Resources/icon.ico"
         ap:WindowStyle.ShowTitle="False"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="LightSkyBlue">
@@ -52,6 +52,6 @@
         </WrapPanel>
     </ap:WindowStyle.LeftContent>
     <ap:WindowStyle.RightContent>
-        <TextBox Text="Search..." />
+        <TextBox Text="Search..." Width="150" />
     </ap:WindowStyle.RightContent>
 </Window>

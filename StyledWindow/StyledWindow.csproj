@@ -4,11 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="*.ico" />
-    <Resource Include="*.ico" />
+    <None Remove="Resources/**/*.*" />
+    <Resource Include="Resources/**/*.*" />
   </ItemGroup>
 
 </Project>
