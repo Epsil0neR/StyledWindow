@@ -23,7 +23,8 @@
     <SolidColorBrush x:Key="{x:Static ap:WindowStyleKeys.TitleBackgroundKey}" Color="{StaticResource WindowStyle.Colors.Background}" />
 
     <Style x:Key="WindowStyle.ApplicationButton" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WindowStyle.Brushes.Foreground}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Foreground}" />
+        <!--<Setter Property="Foreground" Value="{DynamicResource WindowStyle.Brushes.Foreground}" />-->
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -372,7 +373,7 @@
                                                 Orientation="Horizontal" 
                                                 HorizontalAlignment="Right" 
                                                 VerticalAlignment="Top" 
-                                                WindowChrome.IsHitTestVisibleInChrome="True" >
+                                                WindowChrome.IsHitTestVisibleInChrome="True">
                                                 <Button Style="{StaticResource WindowStyle.ApplicationButton.Minimize}" />
                                                 <Button x:Name="Restore" Style="{StaticResource WindowStyle.ApplicationButton.Restore}" />
                                                 <Button x:Name="Maximize" Style="{StaticResource WindowStyle.ApplicationButton.Maximize}" />
