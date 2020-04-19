@@ -325,14 +325,18 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <Image Grid.Column="0"
+                                            <Border 
+                                                x:Name="IconContainer"
+                                                Background="Transparent"
+                                                Grid.Column="0"
+                                                Padding="8 4 0 0">
+                                                <Image 
                                                    x:Name="Icon"
                                                    Height="16"
                                                    Width="16"
-                                                   Margin="8 4 0 0"
                                                    VerticalAlignment="Top"
                                                    Source="{TemplateBinding Icon}"/>
-
+                                            </Border>
                                             <Grid Grid.Column="1">
                                                 <Grid.ColumnDefinitions>
                                                     <!--Title + Menu + Left Content-->
@@ -425,7 +429,6 @@
                         </MultiTrigger>
                         <Trigger Property="ap:WindowStyle.ShowTitle" Value="False">
                             <Setter TargetName="WindowTitleTextBlock" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Icon" Property="ToolTip" Value="{Binding ElementName=WindowTitleTextBlock, Path=Text, Mode=OneWay}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                     <ControlTemplate.Resources>
